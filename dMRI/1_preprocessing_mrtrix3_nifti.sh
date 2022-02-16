@@ -41,3 +41,4 @@ mrcat den_ap1.mif den_ap2.mif den_pa1.mif den_pa2.mif dwi_denoised.mif -axis 3
 dwifslpreproc dwi_denoised.mif dwi_denoised_preproc.mif -rpe_header -eddyqc_all qc -eddy_options " --repol"
 # --repol - replace outlier slices with Gaussian predictions
 # --mporder - not included, but could look at (slice-to-volume motion correction)
+# dwipreproc in earlier MRtrix releases
