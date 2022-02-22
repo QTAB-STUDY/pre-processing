@@ -1,4 +1,4 @@
-# QTAB Pre-processing
+# QTAB pre-processing
 ## MP2RAGE background noise
 The amplified background noise in the MP2RAGE uniform image (*UNIT1*) can cause issues with registration and segmentation algorithms. One technique for dealing with this problem is to input brain-extracted (i.e., skull-stripped) MP2RAGE uniform images to automated processing pipelines (e.g. FreeSurfer, fMRIPrep). We found that creating a brain mask based on the second inversion time image (*inv-2_MP2RAGE*) and applying this mask to the MP2RAGE uniform image (*UNIT1*) resulted in successful brain extractions (see anat/inv-2_brain_extraction.sh)
 
