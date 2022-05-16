@@ -10,19 +10,14 @@
 # Local (Neurodesktop)
 ml fsl/6.0.4
 data_dir=/neurodesktop-storage/qtab_bids
-code_dir=/home/user/Desktop/neurodesktop-storage/code/qtab/fMRI
+code_dir=/home/user/Desktop/neurodesktop-storage/github/pre-processing/func
 output_dir="$data_dir"/derivatives/fmap
-
-# Cluster
-# data_dir=/qtab_data
-# output_dir=/qtab_output 
-# code_dir=/code
 
 participantID="$@"
 EchoSpacing=0.000599984 # Based on the AP/PA epi (not task) scans
 txtfname="$output_dir"/"$participantID"/fmap_acqparams.txt
 
-mkdir "$output_dir"/"$participantID"
+mkdir -p "$output_dir"/"$participantID"
 cp "$data_dir"/"$participantID"/ses-02/fmap/"$participantID"_ses-02_dir-AP_epi.nii.gz "$output_dir"/"$participantID"
 cp "$data_dir"/"$participantID"/ses-02/fmap/"$participantID"_ses-02_dir-PA_epi.nii.gz "$output_dir"/"$participantID"
 cp "$code_dir"/fmap_acqparams.txt "$output_dir"/"$participantID"
