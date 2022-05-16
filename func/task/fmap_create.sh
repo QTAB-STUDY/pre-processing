@@ -10,7 +10,7 @@
 # Local (Neurodesktop)
 ml fsl/6.0.4
 data_dir=/neurodesktop-storage/qtab_bids
-code_dir=/home/user/Desktop/neurodesktop-storage/github/pre-processing/func
+code_dir=/home/user/Desktop/neurodesktop-storage/github/pre-processing/func/task_fMRI
 output_dir="$data_dir"/derivatives/fmap
 
 participantID="$@"
