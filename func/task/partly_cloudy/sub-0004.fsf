@@ -245,7 +245,7 @@ set fmri(regstandard_yn) 1
 set fmri(alternateReference_yn) 0
 
 # Standard image
-set fmri(regstandard) "/usr/local/fsl/data/standard/MNI152_T1_2mm_brain"
+set fmri(regstandard) "/opt/fsl-6.0.5.1/data/standard/MNI152_T1_2mm_brain"
 
 # Search space for registration to standard space
 # 0   : No search
@@ -273,7 +273,7 @@ set fmri(totalVoxels) 184680000
 set fmri(ncopeinputs) 0
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "/neurodesktop-storage/qtab_bids/sub-0004/ses-02/func/QTABID_ses-02_task-partlycloudy_bold"
+set feat_files(1) "/neurodesktop-storage/qtab_bids/sub-0004/ses-02/func/sub-0004_ses-02_task-partlycloudy_bold"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0
@@ -285,7 +285,7 @@ set unwarp_files(1) "/neurodesktop-storage/qtab_bids/derivatives/fmap/sub-0004/T
 set unwarp_files_mag(1) "/neurodesktop-storage/qtab_bids/derivatives/fmap/sub-0004/Magnitude_brain"
 
 # Subject's structural image for analysis 1
-set highres_files(1) "/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing/sub-0004/QTABID_ses-02_UNIT1_brain"
+set highres_files(1) "/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing/sub-0004/sub-0004_ses-02_UNIT1_brain"
 
 # EV 1 title
 set fmri(evtitle1) "Control"

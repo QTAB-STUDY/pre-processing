@@ -30,7 +30,7 @@ set fmri(featwatcher_yn) 1
 set fmri(sscleanup_yn) 0
 
 # Output directory
-set fmri(outputdir) "/neurodesktop-storage/qtab_analysis/func/partly_cloudy/QTABID.feat"
+set fmri(outputdir) "/neurodesktop-storage/qtab_analysis/func/partly_cloudy/sub-0003.feat"
 
 # TR(s)
 set fmri(tr) 0.800000
@@ -273,7 +273,7 @@ set fmri(totalVoxels) 184680000
 set fmri(ncopeinputs) 0
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "/neurodesktop-storage/qtab_analysis/func/partly_cloudy/QTABID.feat"
+set feat_files(1) "/neurodesktop-storage/qtab_analysis/func/partly_cloudy/sub-0003.feat"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0
@@ -691,5 +691,5 @@ set fmri(init_highres) ""
 # Standard space registration initialisation transform
 set fmri(init_standard) ""
 
-# For full FEAT analysis: overwrite existing QTABID.feat output dir?
+# For full FEAT analysis: overwrite existing sub-0003.feat output dir?
 set fmri(overwrite_yn) 0

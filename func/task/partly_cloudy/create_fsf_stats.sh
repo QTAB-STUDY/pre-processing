@@ -11,12 +11,11 @@ code_dir=/home/user/Desktop/neurodesktop-storage/github/func/task/partly_cloudy
 while read participant_id; do
     cd "$code_dir" ||
     echo "$participant_id"
-    cat "$code_dir"/template_preprocessing.fsf | sed s/QTABID/"$participant_id"/g > "$code_dir"/"$participant_id".fsf
+    cat "$code_dir"/template_stats.fsf | sed s/QTABID/"$participant_id"/g > "$code_dir"/"$participant_id"_stats.fsf
     done < "$code_dir"/participant_id_preprocessing.txt
 
 # Run preprocessing
 # Local (Neurodesktop)
 # ml fsl/6.0.5.1 # needs to match the fsl directory given in template_preprocessing.fsf
 
-# Issues with mp2rage registration ....
-# feat "$participant_id".fsf
+# feat "$participant_id_stats".fsf
