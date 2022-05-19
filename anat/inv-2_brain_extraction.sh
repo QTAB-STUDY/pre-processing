@@ -5,7 +5,7 @@
 
 # Local (Neurodesktop)
 ml ants/2.3.5
-ml fsl/6.0.4
+ml fsl/6.0.5.1
 data_dir=/neurodesktop-storage/qtab_bids
 output_dir="$data_dir"/derivatives/MP2RAGE_preprocessing
 

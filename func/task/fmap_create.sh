@@ -8,9 +8,9 @@
 # https://github.com/Washington-University/HCPpipelines/blob/master/global/scripts/TopupPreprocessingAll.sh
 
 # Local (Neurodesktop)
-ml fsl/6.0.4
+ml fsl/6.0.5.1
 data_dir=/neurodesktop-storage/qtab_bids
-code_dir=/home/user/Desktop/neurodesktop-storage/github/pre-processing/func/task_fMRI
+code_dir=/neurodesktop-storage/github/func/task
 output_dir="$data_dir"/derivatives/fmap
 
 participantID="$@"
@@ -33,4 +33,11 @@ topup --imain="$output_dir"/"$participantID"/AP_PA.nii.gz --datain="$txtfname" -
 fslmaths TopupField -mul 6.283 TopupField_rads # Convert from Hz to rad/s [scale by 2 * pi]
 fslmaths "$output_dir"/"$participantID"/Magnitudes -Tmean "$output_dir"/"$participantID"/Magnitude
 bet "$output_dir"/"$participantID"/Magnitude "$output_dir"/"$participantID"/Magnitude_brain -f 0.5 -m #Brain extract the magnitude image
-rm -rf sub-* 
+
+# Clean-up
+rm -f sub-*
+rm -f AP*
+rm -f Coeff*
+rm -f fmap*
+rm -f Magnitudes.nii.gz
+rm -f TopupField.nii.gz
