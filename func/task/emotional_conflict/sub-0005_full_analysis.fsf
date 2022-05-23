@@ -30,7 +30,7 @@ set fmri(featwatcher_yn) 1
 set fmri(sscleanup_yn) 0
 
 # Output directory
-set fmri(outputdir) "/neurodesktop-storage/qtab_analysis/func/emotional_conflict/sub-0003"
+set fmri(outputdir) "/neurodesktop-storage/qtab_analysis/func/emotional_conflict/sub-0005"
 
 # TR(s)
 set fmri(tr) 0.800000
@@ -273,19 +273,19 @@ set fmri(totalVoxels) 184680000
 set fmri(ncopeinputs) 0
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "/neurodesktop-storage/qtab_bids/sub-0003/ses-02/func/sub-0003_ses-02_task-emotionalconflict_bold"
+set feat_files(1) "/neurodesktop-storage/qtab_bids/sub-0005/ses-02/func/sub-0005_ses-02_task-emotionalconflict_bold"
 
 # Add confound EVs text file
 set fmri(confoundevs) 0
 
 # B0 unwarp input image for analysis 1
-set unwarp_files(1) "/neurodesktop-storage/qtab_bids/derivatives/fmap/sub-0003/TopupField_rads"
+set unwarp_files(1) "/neurodesktop-storage/qtab_bids/derivatives/fmap/sub-0005/TopupField_rads"
 
 # B0 unwarp mag input image for analysis 1
-set unwarp_files_mag(1) "/neurodesktop-storage/qtab_bids/derivatives/fmap/sub-0003/Magnitude_brain"
+set unwarp_files_mag(1) "/neurodesktop-storage/qtab_bids/derivatives/fmap/sub-0005/Magnitude_brain"
 
 # Subject's structural image for analysis 1
-set highres_files(1) "/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing/sub-0003/sub-0003_ses-02_UNIT1_brain"
+set highres_files(1) "/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing/sub-0005/sub-0005_ses-02_UNIT1_brain"
 
 # EV 1 title
 set fmri(evtitle1) "Incon"
@@ -320,7 +320,7 @@ set fmri(tempfilt_yn1) 1
 set fmri(deriv_yn1) 1
 
 # Custom EV file (EV 1)
-set fmri(custom1) "/neurodesktop-storage/github/func/task/emotional_conflict/events/sub-0003_incongruent.tab"
+set fmri(custom1) "/neurodesktop-storage/github/func/task/emotional_conflict/events/sub-0005_incongruent.tab"
 
 # Gamma sigma (EV 1)
 set fmri(gammasigma1) 3
@@ -370,7 +370,7 @@ set fmri(tempfilt_yn2) 1
 set fmri(deriv_yn2) 1
 
 # Custom EV file (EV 2)
-set fmri(custom2) "/neurodesktop-storage/github/func/task/emotional_conflict/events/sub-0003_congruent.tab"
+set fmri(custom2) "/neurodesktop-storage/github/func/task/emotional_conflict/events/sub-0005_congruent.tab"
 
 # Gamma sigma (EV 2)
 set fmri(gammasigma2) 3

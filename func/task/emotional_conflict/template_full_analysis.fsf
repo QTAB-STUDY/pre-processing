@@ -36,7 +36,7 @@ set fmri(outputdir) "/neurodesktop-storage/qtab_analysis/func/emotional_conflict
 set fmri(tr) 0.800000
 
 # Total volumes
-set fmri(npts) 833
+set fmri(npts) 837
 
 # Delete volumes
 set fmri(ndelete) 0
@@ -109,7 +109,7 @@ set fmri(st_file) "/neurodesktop-storage/github/func/task/slice_timing_file.txt"
 set fmri(bet_yn) 1
 
 # Spatial smoothing FWHM (mm)
-set fmri(smooth) 8.0
+set fmri(smooth) 5
 
 # Intensity normalization
 set fmri(norm_yn) 0
