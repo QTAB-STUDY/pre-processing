@@ -1,7 +1,19 @@
 #!/bin/bash
+# LT Strike
+# Requires FreeSurfer, brain extracted MP2RAGE
+# (FreeSurfer can have difficulty with UNIT1 due to excessive background noise)
 
-# FreeSurfer run using skull stripped MP2RAGE UNITI as input
-recon-all -autorecon1 -noskullstrip -hires -s "$participantID"_"$ses" -i "$participantID"_"$ses"_UNIT1_brain.nii.gz
+# Local (Neurodesktop)
+# Open Open FreeSurfer (Neurodesk -> Image Segmentation -> Freesurfer -> Freesurfer 7.2.0)
+export FS_LICENSE=~/.license
+source /opt/freesurfer-7.2.0/SetUpFreeSurfer.sh
+export SUBJECTS_DIR=/neurodesktop-storage/freesurfer-output
+
+data_dir=/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing
+ses=ses-01
+participantID="$@"
+
+recon-all -autorecon1 -noskullstrip -hires -s "$participantID"_"$ses" -i "$data_dir"/"$participantID"/"$participantID"_"$ses"_UNIT1_brain.nii.gz
 cd "$SUBJECTS_DIR"/"$participantID"_"$ses"/mri
 ln -s T1.mgz brainmask.auto.mgz
 ln -s brainmask.auto.mgz brainmask.mgz
