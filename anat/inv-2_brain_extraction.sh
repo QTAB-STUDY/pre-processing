@@ -4,6 +4,7 @@
 # Produce brain extracted MP2RAGE (based on inv-2 - bet fails on UNIT1 due to excessive background noise)
 # Premask (standard_space_roi) and then BET the inv-2 image to create a brainmask
 # Produces suboptimal brain extractions for some participants - typically missing the frontal pole region
+# Could look at using a pediatric template in standard_space_roi (as opposed to the default MNI_2mm template)
 # Be sure to always QC the brain extracted image
 
 # Local (Neurodesktop)
