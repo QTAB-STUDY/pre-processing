@@ -3,8 +3,8 @@
 # Requires ANTS, FSL
 # Produce brain extracted MP2RAGE (based on inv-2 - bet fails on UNIT1 due to excessive background noise)
 # Premask (standard_space_roi) and then BET the inv-2 image to create a brainmask
-# Produces suboptimal brain extractions for some participants - typically missing the frontal pole region
-# Could look at using a pediatric template in standard_space_roi (as opposed to the default MNI_2mm template)
+# Produces suboptimal brain extractions for some participants
+# Could look at using a pediatric template in standard_space_roi (as opposed to the default MNI template) and/or tweak FLIRT options
 # Be sure to always QC the brain extracted image
 
 # Local (Neurodesktop)
@@ -20,7 +20,7 @@ output_dir="$data_dir"/derivatives/MP2RAGE_preprocessing
 # code_dir=/code
 
 participantID="$@"
-ses=ses-02
+ses=ses-01
 
 # Organise the data
 echo Now running "$participantID"
