@@ -2,6 +2,9 @@
 # LT Strike
 # Requires ANTS, FSL
 # Produce brain extracted MP2RAGE (based on inv-2 - bet fails on UNIT1 due to excessive background noise)
+# Premask (standard_space_roi) and then BET the inv-2 image to create a brainmask
+# Produces suboptimal brain extractions for some participants - typically missing the frontal pole region
+# Be sure to always QC the brain extracted image
 
 # Local (Neurodesktop)
 ml ants/2.3.5
@@ -32,7 +35,7 @@ N4BiasFieldCorrection -i "$participantID"_"$ses"_inv-2_MP2RAGE.nii.gz -o "$parti
 
 # Use fsl standard_space_roi to create a brain mask (based on the inv-2 image) and use this mask to obtain the UNIT1 brain
 standard_space_roi "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected.nii.gz ssroi_"$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected.nii.gz -b
-bet ssroi_"$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected.nii.gz "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain.nii.gz -f 0.2 -m # default=0.5; smaller values give larger brain outline estimates
+bet ssroi_"$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected.nii.gz "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain.nii.gz -f 0.15 -m
 fslmaths "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain_mask.nii.gz -ero "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain_mask_ero.nii.gz
 fslmaths "$participantID"_"$ses"_UNIT1.nii.gz -mul "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain_mask_ero.nii.gz "$participantID"_"$ses"_UNIT1_brain.nii.gz
 
@@ -44,5 +47,3 @@ rm -f "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected.nii.gz
 rm -f "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain.nii.gz
 rm -f "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain_mask.nii.gz
 rm -f "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain_mask_ero.nii.gz 
-
-# QC the brain extracted MP2RAGE & adjust BET parameters if required
