@@ -2,6 +2,7 @@
 # LT Strike
 # Requires FreeSurfer, brain extracted MP2RAGE
 # (FreeSurfer can have difficulty with UNIT1 due to excessive background noise)
+# Usage: FS7_run.sh [participant_id]
 
 # Local (Neurodesk https://www.neurodesk.org/)
 # Open Open FreeSurfer (Neurodesk -> Image Segmentation -> Freesurfer -> Freesurfer 7.2.0)

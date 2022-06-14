@@ -8,6 +8,7 @@
 # Available from http://nist.mni.mcgill.ca/pediatric-atlases-4-5-18-5y/
 # The 7-11 years template works well, but there are template for older age ranges 
 # Be sure to always QC the brain extracted image!
+# Usage: inv-2_brain_extraction.sh [participant_id]
 
 # Local (Neurodesk https://www.neurodesk.org/)
 ml ants/2.3.5

@@ -3,6 +3,7 @@
 # Requires FSL
 # Quick method to produce MP2RAGE UNIT1 image with some background noise removed (based on a mask created from thresholding the inv-2 image)
 # Doesn't work for all registration and segmentation algorithms (i.e., too much background noise remains)
+# Usage: inv-2_mask.sh [participant_id]
 
 # Local (Neurodesk https://www.neurodesk.org/)
 ml fsl/6.0.5.1
