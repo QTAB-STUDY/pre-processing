@@ -3,7 +3,7 @@
 # Requires FreeSurfer, brain extracted MP2RAGE
 # (FreeSurfer can have difficulty with UNIT1 due to excessive background noise)
 
-# Local (Neurodesktop)
+# Local (Neurodesk https://www.neurodesk.org/)
 # Open Open FreeSurfer (Neurodesk -> Image Segmentation -> Freesurfer -> Freesurfer 7.2.0)
 export FS_LICENSE=~/.license
 source /opt/freesurfer-7.2.0/SetUpFreeSurfer.sh
