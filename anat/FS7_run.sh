@@ -6,9 +6,9 @@
 
 # Local (Neurodesk https://www.neurodesk.org/)
 # Open Open FreeSurfer (Neurodesk -> Image Segmentation -> Freesurfer -> Freesurfer 7.2.0)
-export FS_LICENSE=~/.license
 source /opt/freesurfer-7.2.0/SetUpFreeSurfer.sh
 export SUBJECTS_DIR=/neurodesktop-storage/freesurfer-output
+export FS_LICENSE=/neurodesktop-storage/github/anat/.license
 
 data_dir=/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing
 ses=ses-01
