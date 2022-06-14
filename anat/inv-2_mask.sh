@@ -4,7 +4,7 @@
 # Quick method to produce MP2RAGE UNIT1 image with some background noise removed (based on a mask created from thresholding the inv-2 image)
 # Doesn't work for all registration and segmentation algorithms (i.e., too much background noise remains)
 
-# Local (Neurodesktop)
+# Local (Neurodesk https://www.neurodesk.org/)
 ml fsl/6.0.5.1
 data_dir=/neurodesktop-storage/qtab_bids
 output_dir="$data_dir"/derivatives/MP2RAGE_preprocessing

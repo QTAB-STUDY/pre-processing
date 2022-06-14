@@ -9,7 +9,7 @@
 # The 7-11 years template works well, but there are template for older age ranges 
 # Be sure to always QC the brain extracted image!
 
-# Local (Neurodesktop)
+# Local (Neurodesk https://www.neurodesk.org/)
 ml ants/2.3.5
 ml fsl/6.0.5.1
 data_dir=/neurodesktop-storage/qtab_bids
