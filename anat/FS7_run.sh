@@ -1,11 +1,16 @@
 #!/bin/bash
 # LT Strike
-# Requires FreeSurfer, brain extracted MP2RAGE
-# (FreeSurfer can have difficulty with UNIT1 due to excessive background noise)
+# Requires FreeSurfer
+# Uses a brain extracted MP2RAGE as T1w input (FreeSurfer can have difficulty with UNIT1 due to excessive background noise)
 # Usage: FS7_run.sh [participant_id]
 
-# Local (Neurodesk https://www.neurodesk.org/)
-# Open Open FreeSurfer (Neurodesk -> Image Segmentation -> Freesurfer -> Freesurfer 7.2.0)
+if [[ $# -eq 0 ]] ; then
+    echo 'Please provide a participant_id'
+    exit 0
+fi
+
+## Local (Neurodesk https://www.neurodesk.org/)
+# Lauch through GUI - Neurodesk -> Image Segmentation -> Freesurfer -> Freesurfer 7.2.0
 source /opt/freesurfer-7.2.0/SetUpFreeSurfer.sh
 export SUBJECTS_DIR=/neurodesktop-storage/freesurfer-output
 export FS_LICENSE=/neurodesktop-storage/github/anat/.license
