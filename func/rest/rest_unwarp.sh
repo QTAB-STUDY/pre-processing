@@ -1,35 +1,57 @@
 #!/bin/bash
-#PBS -A UQ-QBI
-#PBS -N pbsS1
-#PBS -l select=1:ncpus=1:mem=6GB
-#PBS -l walltime=01:00:00
-#PBS -J 1-166
-module load singularity
+#!/bin/bash
+# LT Strike
+# Requires FSL
+# Requires opposite phase encoded bold scans, myacqparams.txt (specifies phase encoding direction & readout time)
+# Usage: rest_unwarp.sh [participant_id]
 
-## rs-fMRI pre-preprocessing
-ANALYSIS_DIR=/90days/user/qtab_analysis/rsfMRI
-CODE_DIR=/home/user/bin/qtab/rsfMRI/conn
-BIDS_DIR=/QRISdata/Q1319/data/mri/BIDS_sorted
-CONTAINER_DIR=/90days/user/containers
-OUTPUT_DIR=/RDS/Q0292/QTAB/rs_fMRI/1_pre_preprocessed/
+if [[ $# -eq 0 ]] ; then
+    echo 'Please provide a participant_id'
+    exit 0
+fi
 
-participants=`cat ${CODE_DIR}/S1_participants.txt`
-participantsArray=($participants)
-imgID=`echo ${participantsArray[${PBS_ARRAY_INDEX}]}`
+# Local (Neurodesk https://www.neurodesk.org/)
+# Lauch through GUI: /Neurodesk/Functional Imaging/fsl or terminal: ml fsl
+ml fsl
+data_dir=/neurodesktop-storage/qtab_bids
+output_dir=/home/user/neurodesktop-storage/qtab_bids/derivatives/rest_unwarped
+code_dir=/home/user/neurodesktop-storage/github/func/rest
 
-subj=${imgID/_*}
-mkdir -p ${ANALYSIS_DIR}/${imgID}
-cd ${ANALYSIS_DIR}/${imgID}
-cp -p ${BIDS_DIR}/sub-${subj}/ses-02/func/*rest*.nii.gz .
-singularity exec ${CONTAINER_DIR}/debian_9.4_mrtrix3_fsl5.simg fslroi sub-${subj}_ses-02_task-rest_AP_bold.nii.gz AP_317 10 317 # Remove first 10 vols - may not be necessary
-singularity exec ${CONTAINER_DIR}/debian_9.4_mrtrix3_fsl5.simg fslroi sub-${subj}_ses-02_task-rest_PA_bold.nii.gz PA_317 10 317 # Remove first 10 vols - may not be necessary
-singularity exec ${CONTAINER_DIR}/debian_9.4_mrtrix3_fsl5.simg fslroi AP_317.nii.gz AP 0 1
-singularity exec ${CONTAINER_DIR}/debian_9.4_mrtrix3_fsl5.simg fslroi PA_317.nii.gz PA 0 1
-singularity exec ${CONTAINER_DIR}/debian_9.4_mrtrix3_fsl5.simg fslmerge -t AP_PA.nii.gz AP.nii.gz PA.nii.gz
-singularity exec ${CONTAINER_DIR}/debian_9.4_mrtrix3_fsl5.simg topup --imain=AP_PA --datain=${CODE_DIR}/myacqparams.txt --config=b02b0.cnf --out=topup_AP_PA --iout=topup_AP_PA_iout --fout=topup_AP_PA_fout
-singularity exec ${CONTAINER_DIR}/debian_9.4_mrtrix3_fsl5.simg applytopup --imain=AP_317.nii.gz --inindex=1 --method=jac --datain=${CODE_DIR}/myacqparams.txt --topup=topup_AP_PA --out=${imgID}_runAP --verbose
-singularity exec ${CONTAINER_DIR}/debian_9.4_mrtrix3_fsl5.simg applytopup --imain=PA_317.nii.gz --inindex=2 --method=jac --datain=${CODE_DIR}/myacqparams.txt --topup=topup_AP_PA --out=${imgID}_runPA --verbose
+participantID="$@"
+ses=ses-01
 
-mkdir ${OUTPUT_DIR}/${imgID}
-cp -p ${ANALYSIS_DIR}/${imgID}/*run* ${OUTPUT_DIR}/${imgID}
-rm -rf ${ANALYSIS_DIR}/${imgID}
+# Organise the data
+mkdir -p ${output_dir}/${participantID}
+cp -p ${data_dir}/${participantID}/"$ses"/func/*rest* ${output_dir}/${participantID}
+
+# Could remove the first 10 volumes to allow the magnatization to stablize to a steady state
+# However, I think the scanner obtains dummy scans prior to actual scan. Can check data & MRIQC report to be sure
+# fslroi ${participantID}_"$ses"_task-rest_dir-AP_bold.nii.gz ${participantID}_"$ses"_task-rest_dir-AP_bold_trimmed.nii.gz 10 317
+# fslroi ${participantID}_"$ses"_task-rest_dir-PA_bold.nii.gz ${participantID}_"$ses"_task-rest_dir-PA_bold_trimmed.nii.gz 10 317
+
+# topup
+cd ${output_dir}/${participantID} 
+fslroi ${participantID}_"$ses"_task-rest_dir-AP_bold.nii.gz AP 0 1
+fslroi ${participantID}_"$ses"_task-rest_dir-PA_bold.nii.gz PA 0 1
+fslmerge -t AP_PA.nii.gz AP.nii.gz PA.nii.gz
+topup --imain=AP_PA --datain=${code_dir}/myacqparams.txt --config=b02b0.cnf --out=topup_AP_PA --iout=topup_AP_PA_iout --fout=topup_AP_PA_fout
+
+# applytopup
+applytopup --imain=${participantID}_"$ses"_task-rest_dir-AP_bold.nii.gz --inindex=1 --method=jac --datain=${code_dir}/myacqparams.txt --topup=topup_AP_PA --out=${participantID}_runAP --verbose
+applytopup --imain=${participantID}_"$ses"_task-rest_dir-PA_bold.nii.gz --inindex=2 --method=jac --datain=${code_dir}/myacqparams.txt --topup=topup_AP_PA --out=${participantID}_runPA --verbose
+
+# Cleanup
+rm -f ${output_dir}/${participantID}/AP.nii.gz
+rm -f ${output_dir}/${participantID}/AP_PA.nii.gz
+rm -f ${output_dir}/${participantID}/AP_PA.topup_log
+rm -f ${output_dir}/${participantID}/PA.nii.gz
+rm -f ${output_dir}/${participantID}/sub-0001_ses-01_task-rest_dir-AP_bold.json
+rm -f ${output_dir}/${participantID}/sub-0001_ses-01_task-rest_dir-AP_bold.nii.gz
+rm -f ${output_dir}/${participantID}/sub-0001_ses-01_task-rest_dir-PA_bold.json
+rm -f ${output_dir}/${participantID}/sub-0001_ses-01_task-rest_dir-PA_bold.nii.gz
+rm -f ${output_dir}/${participantID}/topup_AP_PA_fieldcoef.nii.gz
+rm -f ${output_dir}/${participantID}/topup_AP_PA_fout.nii.gz
+rm -f ${output_dir}/${participantID}/topup_AP_PA_iout.nii.gz
+rm -f ${output_dir}/${participantID}/topup_AP_PA_movpar.txt
+
+echo "Participant "$participantID" is finished"
