@@ -16,6 +16,7 @@ data_dir=/neurodesktop-storage/qtab_bids
 t1w_dir=/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing
 bids_dir=/neurodesktop-storage/qtab_analysis/fMRIPrep/bids
 output_dir=/neurodesktop-storage/qtab_analysis/fMRIPrep/output
+code_dir=/neurodesktop-storage/GitHub/anat
 
 ## Local BIDS directory setup (initial run only)
 # mkdir -p "$bids_dir"
@@ -26,7 +27,7 @@ output_dir=/neurodesktop-storage/qtab_analysis/fMRIPrep/output
 
 # Organise the data (bold, t1w, field maps)
 participantID="$@"
-ses=ses-02
+ses=ses-01
 echo Now running "$participantID"
 mkdir -p "$bids_dir"/"$participantID"/"$ses"/func/
 mkdir -p "$bids_dir"/"$participantID"/"$ses"/anat/
@@ -36,4 +37,4 @@ cp "$t1w_dir"/"$participantID"/"$participantID"_"$ses"_UNIT1_brain.nii.gz "$bids
 cp -r "$data_dir"/"$participantID"/"$ses"/fmap "$bids_dir"/"$participantID"/"$ses"/
 
 # Run fMRIPrep
-fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" --skull-strip-t1w skip --fs-license-file /neurodesktop-storage/github/anat/.license
+fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" --skull-strip-t1w skip --fs-license-file "$code_dir"/.license

@@ -10,14 +10,20 @@
 # Be sure to always QC the brain extracted image!
 # Usage: inv-2_brain_extraction.sh [participant_id]
 
+if [[ $# -eq 0 ]] ; then
+    echo 'Please provide a participant_id'
+    exit 0
+fi
+
 # Local (Neurodesk https://www.neurodesk.org/)
 ml ants/2.3.5
 ml fsl/6.0.5.1
 data_dir=/neurodesktop-storage/qtab_bids
 output_dir="$data_dir"/derivatives/MP2RAGE_preprocessing
+code_dir=/neurodesktop-storage/GitHub/pre-processing/anat
 
 participantID="$@"
-ses=ses-01
+ses=ses-02
 
 # Organise the data
 echo Now running "$participantID"

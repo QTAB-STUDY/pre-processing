@@ -14,8 +14,8 @@ fi
 # Lauch through GUI: /Neurodesk/Functional Imaging/fsl or terminal: ml fsl
 ml fsl
 data_dir=/neurodesktop-storage/qtab_bids
-output_dir=/home/user/neurodesktop-storage/qtab_bids/derivatives/rest_unwarped
-code_dir=/home/user/neurodesktop-storage/github/func/rest
+output_dir=/neurodesktop-storage/qtab_bids/derivatives/rest
+code_dir=/neurodesktop-storage/GitHub/pre-processing/func/rest
 
 participantID="$@"
 ses=ses-01
@@ -45,10 +45,10 @@ rm -f ${output_dir}/${participantID}/AP.nii.gz
 rm -f ${output_dir}/${participantID}/AP_PA.nii.gz
 rm -f ${output_dir}/${participantID}/AP_PA.topup_log
 rm -f ${output_dir}/${participantID}/PA.nii.gz
-rm -f ${output_dir}/${participantID}/sub-0001_ses-01_task-rest_dir-AP_bold.json
-rm -f ${output_dir}/${participantID}/sub-0001_ses-01_task-rest_dir-AP_bold.nii.gz
-rm -f ${output_dir}/${participantID}/sub-0001_ses-01_task-rest_dir-PA_bold.json
-rm -f ${output_dir}/${participantID}/sub-0001_ses-01_task-rest_dir-PA_bold.nii.gz
+rm -f ${output_dir}/${participantID}/${participantID}_"$ses"_task-rest_dir-AP_bold.json
+rm -f ${output_dir}/${participantID}/${participantID}_"$ses"_task-rest_dir-AP_bold.nii.gz
+rm -f ${output_dir}/${participantID}/${participantID}_"$ses"_task-rest_dir-PA_bold.json
+rm -f ${output_dir}/${participantID}/${participantID}_"$ses"_task-rest_dir-PA_bold.nii.gz
 rm -f ${output_dir}/${participantID}/topup_AP_PA_fieldcoef.nii.gz
 rm -f ${output_dir}/${participantID}/topup_AP_PA_fout.nii.gz
 rm -f ${output_dir}/${participantID}/topup_AP_PA_iout.nii.gz
