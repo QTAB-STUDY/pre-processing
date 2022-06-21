@@ -1,7 +1,7 @@
 #!/bin/bash
 # LT Strike
 # Requires fMRIPrep & FreeSurfer
-# Uses a skull-stripped MP2RAGE uniform image (UNIT1) as the T1w input. 
+# Requires T1w (skull-stripped MP2RAGE UNIT1 renamed as T1w), bold
 
 if [[ $# -eq 0 ]] ; then
     echo 'Please provide a participant_id'
@@ -36,4 +36,4 @@ cp "$data_dir"/"$participantID"/"$ses"/anat/"$participantID"_"$ses"_UNIT1.json "
 cp "$t1w_dir"/"$participantID"/"$participantID"_"$ses"_UNIT1_brain.nii.gz "$bids_dir"/"$participantID"/"$ses"/anat/"$participantID"_"$ses"_T1w.nii.gz
 
 # Run fMRIPrep
-fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" --skull-strip-t1w skip --fs-license-file "$code_dir"/.license
+fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" --skull-strip-t1w skip --fs-license-file "$code_dir"/.license -w /tmp/
