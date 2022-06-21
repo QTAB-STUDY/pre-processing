@@ -16,25 +16,24 @@ data_dir=/neurodesktop-storage/qtab_bids
 t1w_dir=/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing
 bids_dir=/neurodesktop-storage/qtab_analysis/fMRIPrep/bids
 output_dir=/neurodesktop-storage/qtab_analysis/fMRIPrep/output
-code_dir=/neurodesktop-storage/GitHub/anat
+code_dir=/neurodesktop-storage/GitHub/pre-processing/anat
 
-## Local BIDS directory setup (initial run only)
-# mkdir -p "$bids_dir"
-# mkdir -p "$output_dir"
-# cp "$data_dir"/dataset_description.json "$bids_dir"
-# cp "$data_dir"/README "$bids_dir"
-# cp "$data_dir"/participants* "$bids_dir"
+# Local BIDS directory setup (initial run only)
+mkdir -p "$bids_dir"
+mkdir -p "$output_dir"
+cp "$data_dir"/dataset_description.json "$bids_dir"
+cp "$data_dir"/README "$bids_dir"
+cp "$data_dir"/participants* "$bids_dir"
 
-# Organise the data (bold, t1w, field maps)
+# Organise the data (bold, t1w)
 participantID="$@"
 ses=ses-01
 echo Now running "$participantID"
 mkdir -p "$bids_dir"/"$participantID"/"$ses"/func/
 mkdir -p "$bids_dir"/"$participantID"/"$ses"/anat/
-cp "$data_dir"/"$participantID"/"$ses"/func/"$participantID"_"$ses"_task-partlycloudy* "$bids_dir"/"$participantID"/"$ses"/func/
+cp "$data_dir"/"$participantID"/"$ses"/func/"$participantID"_"$ses"_task-rest* "$bids_dir"/"$participantID"/"$ses"/func/
 cp "$data_dir"/"$participantID"/"$ses"/anat/"$participantID"_"$ses"_UNIT1.json "$bids_dir"/"$participantID"/"$ses"/anat/"$participantID"_"$ses"_T1w.json
 cp "$t1w_dir"/"$participantID"/"$participantID"_"$ses"_UNIT1_brain.nii.gz "$bids_dir"/"$participantID"/"$ses"/anat/"$participantID"_"$ses"_T1w.nii.gz
-cp -r "$data_dir"/"$participantID"/"$ses"/fmap "$bids_dir"/"$participantID"/"$ses"/
 
 # Run fMRIPrep
 fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" --skull-strip-t1w skip --fs-license-file "$code_dir"/.license
