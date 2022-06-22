@@ -37,8 +37,8 @@ fslmerge -t AP_PA.nii.gz AP.nii.gz PA.nii.gz
 topup --imain=AP_PA --datain=${code_dir}/myacqparams.txt --config=b02b0.cnf --out=topup_AP_PA --iout=topup_AP_PA_iout --fout=topup_AP_PA_fout
 
 # applytopup
-applytopup --imain=${participantID}_"$ses"_task-rest_dir-AP_bold.nii.gz --inindex=1 --method=jac --datain=${code_dir}/myacqparams.txt --topup=topup_AP_PA --out=${participantID}_runAP --verbose
-applytopup --imain=${participantID}_"$ses"_task-rest_dir-PA_bold.nii.gz --inindex=2 --method=jac --datain=${code_dir}/myacqparams.txt --topup=topup_AP_PA --out=${participantID}_runPA --verbose
+applytopup --imain=${participantID}_"$ses"_task-rest_dir-AP_bold.nii.gz --inindex=1 --method=jac --datain=${code_dir}/myacqparams.txt --topup=topup_AP_PA --out=${participantID}_"$ses"_task-rest_dir-AP_bold_distcor --verbose
+applytopup --imain=${participantID}_"$ses"_task-rest_dir-PA_bold.nii.gz --inindex=2 --method=jac --datain=${code_dir}/myacqparams.txt --topup=topup_AP_PA --out=${participantID}_"$ses"_task-rest_dir-PA_bold_distcor --verbose
 
 # Cleanup
 rm -f ${output_dir}/${participantID}/AP.nii.gz
