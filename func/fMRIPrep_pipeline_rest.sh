@@ -23,6 +23,8 @@ t1w_dir=/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing
 bids_dir=/neurodesktop-storage/qtab_analysis/fMRIPrep/bids
 output_dir=/neurodesktop-storage/qtab_analysis/fMRIPrep/output
 license_dir=/neurodesktop-storage/GitHub/pre-processing/anat
+mem_mb="6000"
+num_threads="2"
 
 # Local BIDS directory setup (initial run only)
 #mkdir -p "$bids_dir"
@@ -42,6 +44,9 @@ cp "$rest_dir"/"$participantID"/"$participantID"_"$ses"_task-rest_dir-AP_bold_di
 cp "$rest_dir"/"$participantID"/"$participantID"_"$ses"_task-rest_dir-PA_bold_distcor.nii.gz "$bids_dir"/"$participantID"/"$ses"/func/"$participantID"_"$ses"_task-rest_dir-PA_bold.nii.gz
 
 # Run fMRIPrep
-fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" --skull-strip-t1w skip --fs-license-file "$license_dir"/.license -w /tmp/
+fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" \
+       	--skull-strip-t1w skip --fs-license-file "$license_dir"/.license -w /tmp/ \
+       	--mem "$mem_mb" --nprocs "$num_threads" \
+	-t rest
 
 echo "$participantID" is complete
