@@ -1,21 +1,26 @@
 #!/bin/bash
 # LT Strike
+# Work-in-Progress 
 # Requires fMRIPrep & FreeSurfer
-# Requires T1w (skull-stripped MP2RAGE uniform image renamed as T1w), bold, field maps
+# Requires T1w (skull-stripped MP2RAGE uniform image renamed as T1w), bold
+# Susceptibility Distortion Correction (SDC) - field maps or Fieldmap-less estimation (--use-syn-sdc)
+# Field maps require metadata field in json:
+# "IntendedFor":["ses-02/func/sub-0001_ses-02_task-partlycloudy_bold.nii.gz"]
+# Uses Paediatric MNI template
 
 if [[ $# -eq 0 ]] ; then
     echo 'Please provide a participant_id'
     exit 0
 fi
 
-# Local Run (Neurodesk https://www.neurodesk.org/)
+## Local (Neurodesk https://www.neurodesk.org/)
 # Lauch through GUI: /Neurodesk/Functional Imaging/fmriprep or terminal: ml fmriprep/21.0.1
 # Make sure to include a link to the FreeSurfer licence file in the fMRIPrep call
 ml fmriprep/21.0.1 
 
 participantID="$*"
 ses="ses-02"
-mem_mb="8000"
+mem_mb="12000"
 num_threads="2"
 bids_dir=/neurodesktop-storage/qtab_bids
 t1w_dir=/neurodesktop-storage/qtab_bids/derivatives/MP2RAGE_preprocessing
@@ -31,6 +36,6 @@ cp "$bids_dir"/"$participantID"/"$ses"/anat/"$participantID"_"$ses"_inv-2_MP2RAG
 fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" \
 	--skull-strip-t1w skip --fs-license-file "$license_dir"/.license -w /tmp/ \
 	--mem "$mem_mb" --nprocs "$num_threads" \
-	-t partlycloudy --skip_bids_validation
+	-t partlycloudy --skip_bids_validation --output-spaces MNIPediatricAsym:res-native:cohort-5 # Cohort 5 is 10 - 14 years, early to advanced puberty
 
 echo "$participantID" is complete
