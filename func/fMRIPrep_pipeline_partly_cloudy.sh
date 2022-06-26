@@ -1,12 +1,13 @@
 #!/bin/bash
 # LT Strike
-# Work-in-Progress 
+# Work-in-Progress pipeline for the QTAB dataset (https://doi.org/10.18112/openneuro.ds004146.v1.0.2)
 # Requires fMRIPrep & FreeSurfer
-# Requires T1w (skull-stripped MP2RAGE uniform image renamed as T1w), bold
+# Requires T1w (skull-stripped MP2RAGE uniform image renamed as T1w), bold, field maps (optional - not currently working)
 # Susceptibility Distortion Correction (SDC) - field maps or Fieldmap-less estimation (--use-syn-sdc)
 # Field maps require metadata field in json:
-# "IntendedFor":["ses-02/func/sub-0001_ses-02_task-partlycloudy_bold.nii.gz"]
-# Uses Paediatric MNI template
+# "IntendedFor":["ses-02/func/participant_id_ses-02_task-partlycloudy_bold.nii.gz"]
+# Field map correction doesn't appear to be working - seems to over-correct?
+# Uses Paediatric MNI template cohort 5: 10 - 14 years, early to advanced puberty
 
 if [[ $# -eq 0 ]] ; then
     echo 'Please provide a participant_id'
@@ -36,6 +37,7 @@ cp "$bids_dir"/"$participantID"/"$ses"/anat/"$participantID"_"$ses"_inv-2_MP2RAG
 fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" \
 	--skull-strip-t1w skip --fs-license-file "$license_dir"/.license -w /tmp/ \
 	--mem "$mem_mb" --nprocs "$num_threads" \
-	-t partlycloudy --skip_bids_validation --output-spaces MNIPediatricAsym:res-native:cohort-5 # Cohort 5 is 10 - 14 years, early to advanced puberty
+	-t partlycloudy --skip_bids_validation --output-spaces MNIPediatricAsym:res-native:cohort-5 \
+	--ignore fieldmaps --use-syn-sdc
 
 echo "$participantID" is complete
