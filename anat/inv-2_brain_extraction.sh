@@ -22,8 +22,8 @@ data_dir=/neurodesktop-storage/qtab_bids
 output_dir="$data_dir"/derivatives/MP2RAGE_preprocessing
 code_dir=/neurodesktop-storage/GitHub/pre-processing/anat
 
-participantID="$@"
-ses=ses-02
+participantID="$*"
+ses="ses-02"
 
 # Organise the data
 echo Now running "$participantID"
@@ -52,3 +52,5 @@ rm -f "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected.nii.gz
 rm -f "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain.nii.gz
 rm -f "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain_mask.nii.gz
 rm -f "$participantID"_"$ses"_inv-2_MP2RAGE_N4corrected_brain_mask_ero.nii.gz 
+
+echo "$participantID" is complete

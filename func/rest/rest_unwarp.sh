@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 # LT Strike
 # Requires FSL
 # Requires opposite phase encoded bold scans, myacqparams.txt (specifies phase encoding direction & readout time)
@@ -13,16 +12,16 @@ fi
 # Local (Neurodesk https://www.neurodesk.org/)
 # Lauch through GUI: /Neurodesk/Functional Imaging/fsl or terminal: ml fsl
 ml fsl
-data_dir=/neurodesktop-storage/qtab_bids
+bids_dir=/neurodesktop-storage/qtab_bids
 output_dir=/neurodesktop-storage/qtab_bids/derivatives/rest
 code_dir=/neurodesktop-storage/GitHub/pre-processing/func/rest
 
-participantID="$@"
-ses=ses-01
+participantID="$*"
+ses="ses-01"
 
 # Organise the data
 mkdir -p ${output_dir}/${participantID}
-cp -p ${data_dir}/${participantID}/"$ses"/func/*rest* ${output_dir}/${participantID}
+cp -p ${bids_dir}/${participantID}/"$ses"/func/*rest* ${output_dir}/${participantID}
 
 # Could remove the first 10 volumes to allow the magnatization to stablize to a steady state
 # However, I think the scanner obtains dummy scans prior to actual scan. Can check data & MRIQC report to be sure

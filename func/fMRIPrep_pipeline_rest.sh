@@ -45,8 +45,7 @@ cp "$rest_dir"/"$participantID"/"$participantID"_"$ses"_task-rest_dir-PA_bold_di
 
 # Run fMRIPrep
 fmriprep "$bids_dir"/ "$output_dir"/ participant --participant_label "$participantID" \
-       	--skull-strip-t1w skip --fs-license-file "$license_dir"/.license -w /tmp/ \
-       	--mem "$mem_mb" --nprocs "$num_threads" \
-	-t rest
+	--skull-strip-t1w skip --fs-license-file "$license_dir"/.license -w /tmp/ \
+	--mem "$mem_mb" --nprocs "$num_threads" -t rest
 
 echo "$participantID" is complete

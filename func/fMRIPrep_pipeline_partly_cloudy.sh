@@ -8,6 +8,7 @@
 # Field maps require metadata field in json:
 # "IntendedFor":["ses-02/func/participant_id_ses-02_task-partlycloudy_bold.nii.gz"]
 # Field map correction doesn't appear to be working - seems to over-correct?
+# Usage: fMRIPrep_pipeline_partly_cloudy.sh [participant_id]
 
 if [[ $# -eq 0 ]] ; then
     echo 'Please provide a participant_id'

@@ -6,20 +6,26 @@
 # Pieced together from
 # https://lcni.uoregon.edu/kb-articles/kb-0003
 # https://github.com/Washington-University/HCPpipelines/blob/master/global/scripts/TopupPreprocessingAll.sh
+# Usage: fmap_create.sh [participant_id]
+
+if [[ $# -eq 0 ]] ; then
+    echo 'Please provide a participant_id'
+    exit 0
+fi
 
 # Local (Neurodesktop)
 ml fsl/6.0.5.1
-data_dir=/neurodesktop-storage/qtab_bids
+bids_dir=/neurodesktop-storage/qtab_bids
 code_dir=/neurodesktop-storage/github/func/task
-output_dir="$data_dir"/derivatives/fmap
+output_dir="$bids_dir"/derivatives/fmap
 
-participantID="$@"
+participantID="$*"
 EchoSpacing=0.000599984 # Based on the AP/PA epi (not task) scans
 txtfname="$output_dir"/"$participantID"/fmap_acqparams.txt
 
 mkdir -p "$output_dir"/"$participantID"
-cp "$data_dir"/"$participantID"/ses-02/fmap/"$participantID"_ses-02_dir-AP_epi.nii.gz "$output_dir"/"$participantID"
-cp "$data_dir"/"$participantID"/ses-02/fmap/"$participantID"_ses-02_dir-PA_epi.nii.gz "$output_dir"/"$participantID"
+cp "$bids_dir"/"$participantID"/ses-02/fmap/"$participantID"_ses-02_dir-AP_epi.nii.gz "$output_dir"/"$participantID"
+cp "$bids_dir"/"$participantID"/ses-02/fmap/"$participantID"_ses-02_dir-PA_epi.nii.gz "$output_dir"/"$participantID"
 cp "$code_dir"/fmap_acqparams.txt "$output_dir"/"$participantID"
 
 cd "$output_dir"/"$participantID"
@@ -41,3 +47,6 @@ rm -f Coeff*
 rm -f fmap*
 rm -f Magnitudes.nii.gz
 rm -f TopupField.nii.gz
+
+
+echo "Participant "$participantID" is finished"
