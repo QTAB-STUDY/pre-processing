@@ -2,8 +2,8 @@
 # LT Strike
 # Work-in-Progress pipeline for the QTAB dataset (https://doi.org/10.18112/openneuro.ds004146.v1.0.2)
 # Requires fMRIPrep & FreeSurfer
-# Requires T1w (skull-stripped MP2RAGE uniform image renamed as T1w), bold, field maps (optional)
-# Usage: fMRIPrep_pipeline_partly_cloudy.sh [participant_id]
+# Requires T1w (skull-stripped MP2RAGE UNIT1 renamed as T1w), bold, field maps (optional)
+# Usage: fMRIPrep_pipeline_task.sh [participant_id]
 
 # To Do:
 # Look at paediatric MNI template 
