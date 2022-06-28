@@ -48,5 +48,4 @@ rm -f fmap*
 rm -f Magnitudes.nii.gz
 rm -f TopupField.nii.gz
 
-
 echo "Participant "$participantID" is finished"
