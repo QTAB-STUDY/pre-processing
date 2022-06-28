@@ -4,7 +4,7 @@
 # Code for the Partly Cloudy task in the QTAB dataset
 # This analysis pipeline is a work-in-progress - there are likely errors, bugs etc.
 
-code_dir=/home/user/Desktop/neurodesktop-storage/github/func/task/partly_cloudy
+code_dir=/neurodesktop-storage/GitHub/pre-processing/func/task/partly_cloudy
 
 # Create a .fsf file for each participant, based on a template
 # Find & replace QTABID in the template with the participant_id
