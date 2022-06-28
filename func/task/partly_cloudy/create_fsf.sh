@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # LT Strike
-# Code for the Emotional Conflict task in the QTAB dataset
+# Code for the Partly Cloudy task in the QTAB dataset
 # This analysis pipeline is a work-in-progress - there are likely errors, bugs etc.
 
-code_dir=/home/user/Desktop/neurodesktop-storage/github/func/task/emotional_conflict
+code_dir=/neurodesktop-storage/GitHub/pre-processing/func/task/partly_cloudy
 
 # Create a .fsf file for each participant, based on a template
 # Find & replace QTABID in the template with the participant_id
@@ -12,7 +12,7 @@ while read participant_id; do
     cd "$code_dir" ||
     echo "$participant_id"
     cat "$code_dir"/template_full_analysis.fsf | sed s/QTABID/"$participant_id"/g > "$code_dir"/"$participant_id"_full_analysis.fsf
-    done < "$code_dir"/participant_id_preprocessing.txt
+    done < "$code_dir"/participant_id.txt
 
 # Run preprocessing and statistics
 # Local (Neurodesktop)

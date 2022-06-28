@@ -16,7 +16,7 @@ fi
 # Local (Neurodesktop)
 ml fsl/6.0.5.1
 bids_dir=/neurodesktop-storage/qtab_bids
-code_dir=/neurodesktop-storage/github/func/task
+code_dir=/neurodesktop-storage/GitHub/pre-processing/func/task
 output_dir="$bids_dir"/derivatives/fmap
 
 participantID="$*"
@@ -47,6 +47,5 @@ rm -f Coeff*
 rm -f fmap*
 rm -f Magnitudes.nii.gz
 rm -f TopupField.nii.gz
-
 
 echo "Participant "$participantID" is finished"

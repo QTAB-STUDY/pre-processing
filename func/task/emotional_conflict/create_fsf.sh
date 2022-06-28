@@ -4,7 +4,7 @@
 # Code for the Emotional Conflict task in the QTAB dataset
 # This analysis pipeline is a work-in-progress - there are likely errors, bugs etc.
 
-code_dir=/home/user/Desktop/neurodesktop-storage/github/func/task/emotional_conflict
+code_dir=/home/user/Desktop/neurodesktop-storage/GitHub/pre-processing/func/task/emotional_conflict
 
 # Create a .fsf file for each participant, based on a template
 # Find & replace QTABID in the template with the participant_id

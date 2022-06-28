@@ -1,7 +1,7 @@
 setwd("C:/neurodesktop-storage/github/func/task/emotional_conflict")
 library(tidyverse)
 
-event.file <- read.table("../../../../qtab_bids/sub-0005/ses-02/func/sub-0005_ses-02_task-emotionalconflict_events.tsv", 
+event.file <- read.table("C:/neurodesktop-storage/qtab_bids/sub-0005/ses-02/func/sub-0005_ses-02_task-emotionalconflict_events.tsv", 
                          sep = '\t', na.strings = 'n/a', header = T)
 
 Congruent <- event.file %>% filter(trial_type=="Congruent")

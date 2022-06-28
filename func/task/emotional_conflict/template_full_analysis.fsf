@@ -103,7 +103,7 @@ set fmri(unwarp_dir) y-
 set fmri(st) 4
 
 # Slice timings file
-set fmri(st_file) "/neurodesktop-storage/github/func/task/slice_timing_file.txt"
+set fmri(st_file) "/neurodesktop-storage/GitHub/pre-processing/func/task/slice_timing_file.txt"
 
 # BET brain extraction
 set fmri(bet_yn) 1
@@ -320,7 +320,7 @@ set fmri(tempfilt_yn1) 1
 set fmri(deriv_yn1) 1
 
 # Custom EV file (EV 1)
-set fmri(custom1) "/neurodesktop-storage/github/func/task/emotional_conflict/events/QTABID_incongruent.tab"
+set fmri(custom1) "/neurodesktop-storage/GitHub/pre-processing/func/task/emotional_conflict/events/QTABID_incongruent.tab"
 
 # Gamma sigma (EV 1)
 set fmri(gammasigma1) 3
@@ -370,7 +370,7 @@ set fmri(tempfilt_yn2) 1
 set fmri(deriv_yn2) 1
 
 # Custom EV file (EV 2)
-set fmri(custom2) "/neurodesktop-storage/github/func/task/emotional_conflict/events/QTABID_congruent.tab"
+set fmri(custom2) "/neurodesktop-storage/GitHub/pre-processing/func/task/emotional_conflict/events/QTABID_congruent.tab"
 
 # Gamma sigma (EV 2)
 set fmri(gammasigma2) 3

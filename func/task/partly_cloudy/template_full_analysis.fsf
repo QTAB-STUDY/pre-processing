@@ -103,7 +103,7 @@ set fmri(unwarp_dir) y-
 set fmri(st) 4
 
 # Slice timings file
-set fmri(st_file) "/neurodesktop-storage/github/func/task/slice_timing_file.txt"
+set fmri(st_file) "/neurodesktop-storage/GitHub/pre-processing/func/task/slice_timing_file.txt"
 
 # BET brain extraction
 set fmri(bet_yn) 1
@@ -320,7 +320,7 @@ set fmri(tempfilt_yn1) 1
 set fmri(deriv_yn1) 1
 
 # Custom EV file (EV 1)
-set fmri(custom1) "/neurodesktop-storage/github/func/task/partly_cloudy/control.tab"
+set fmri(custom1) "/neurodesktop-storage/GitHub/pre-processing/func/task/partly_cloudy/control.tab"
 
 # Gamma sigma (EV 1)
 set fmri(gammasigma1) 3
@@ -376,7 +376,7 @@ set fmri(tempfilt_yn2) 1
 set fmri(deriv_yn2) 1
 
 # Custom EV file (EV 2)
-set fmri(custom2) "/neurodesktop-storage/github/func/task/partly_cloudy/social.tab"
+set fmri(custom2) "/neurodesktop-storage/GitHub/pre-processing/func/task/partly_cloudy/social.tab"
 
 # Gamma sigma (EV 2)
 set fmri(gammasigma2) 3
@@ -432,7 +432,7 @@ set fmri(tempfilt_yn3) 1
 set fmri(deriv_yn3) 1
 
 # Custom EV file (EV 3)
-set fmri(custom3) "/neurodesktop-storage/github/func/task/partly_cloudy/mental.tab"
+set fmri(custom3) "/neurodesktop-storage/GitHub/pre-processing/func/task/partly_cloudy/mental.tab"
 
 # Gamma sigma (EV 3)
 set fmri(gammasigma3) 3
@@ -488,7 +488,7 @@ set fmri(tempfilt_yn4) 1
 set fmri(deriv_yn4) 1
 
 # Custom EV file (EV 4)
-set fmri(custom4) "/neurodesktop-storage/github/func/task/partly_cloudy/pain.tab"
+set fmri(custom4) "/neurodesktop-storage/GitHub/pre-processing/func/task/partly_cloudy/pain.tab"
 
 # Gamma sigma (EV 4)
 set fmri(gammasigma4) 3
