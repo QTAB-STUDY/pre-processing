@@ -23,7 +23,7 @@ output_dir="$data_dir"/derivatives/MP2RAGE_preprocessing
 code_dir=/neurodesktop-storage/GitHub/pre-processing/anat
 
 participantID="$*"
-ses="ses-02"
+ses="ses-01"
 
 # Organise the data
 echo Now running "$participantID"
