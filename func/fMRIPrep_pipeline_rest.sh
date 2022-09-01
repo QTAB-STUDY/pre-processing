@@ -2,7 +2,7 @@
 # LT Strike
 # Work-in-Progress pipeline for the QTAB dataset (https://doi.org/10.18112/openneuro.ds004146.v1.0.2)
 # Requires fMRIPrep & FreeSurfer
-# Requires T1w (skull-stripped MP2RAGE UNIT1 renamed as T1w), bold (unwarped prior to fMRIPrep)
+# Requires T1w (MP2RAGE UNIT1 with background noise masked out), bold (unwarped prior to fMRIPrep)
 # Usage: fMRIPrep_pipeline_rest.sh [participant_id]
 
 # To Do:
