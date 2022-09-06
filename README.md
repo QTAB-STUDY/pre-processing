@@ -1,8 +1,8 @@
-# QTAB pre-processing
+## QTAB pre-processing
 
-#MP2RAGE background noise
+### MP2RAGE background noise
 
-#Unwarping of diffusion and functional scans
+#### Unwarping of diffusion and functional scans
 
 
 
