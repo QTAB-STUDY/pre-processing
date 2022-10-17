@@ -23,4 +23,4 @@ recon-all -autorecon1 -noskullstrip -hires -s "$participantID"_"$ses" -i "$data_
 cd "$SUBJECTS_DIR"/"$participantID"_"$ses"/mri
 ln -s T1.mgz brainmask.auto.mgz
 ln -s brainmask.auto.mgz brainmask.mgz
-recon-all -autrecon2 -autorecon3 -s "$participantID"_"$ses" -hires
+recon-all -autorecon2 -autorecon3 -s "$participantID"_"$ses" -hires
