@@ -38,6 +38,7 @@ topup --imain=AP_PA --datain=${code_dir}/myacqparams.txt --config=b02b0.cnf --ou
 # applytopup
 applytopup --imain=${participantID}_"$ses"_task-rest_dir-AP_bold.nii.gz --inindex=1 --method=jac --datain=${code_dir}/myacqparams.txt --topup=topup_AP_PA --out=${participantID}_"$ses"_task-rest_dir-AP_bold_distcor --verbose
 applytopup --imain=${participantID}_"$ses"_task-rest_dir-PA_bold.nii.gz --inindex=2 --method=jac --datain=${code_dir}/myacqparams.txt --topup=topup_AP_PA --out=${participantID}_"$ses"_task-rest_dir-PA_bold_distcor --verbose
+fslmerge -t ${participantID}_"$ses"_task-rest_dir-AP_bold_distcor ${participantID}_"$ses"_task-rest_dir-PA_bold_distcor ${participantID}_"$ses"_task-rest_bold_distcor
 
 # Cleanup
 rm -f ${output_dir}/${participantID}/AP.nii.gz
